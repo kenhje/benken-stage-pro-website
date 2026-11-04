@@ -19,3 +19,6 @@
 
 /* Approved Play & Sound logo: exact shared website copper #e5ad83. */
 .brand-logo{object-fit:contain!important;border:0!important;border-radius:0!important;background:transparent!important}.app-identity>img[src="benken-play-sound.svg"]{object-fit:contain;border:0;border-radius:0;box-shadow:none;background:transparent}
+
+/* Show the complete Settings overview rather than cropping to landscape. */
+#product-screen.full-settings-image{aspect-ratio:auto;height:auto;object-fit:contain;display:block}
