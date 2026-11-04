@@ -11,4 +11,4 @@
 
 .brand-logo{border-radius:10px;object-fit:cover}.closing>.brand-logo{border-radius:14px}
 
-.closeup-grid .image-open img{aspect-ratio:3/4;object-fit:contain}#image-dialog{max-width:790px;max-height:calc(100dvh - 32px)}#image-dialog>img{max-height:calc(100dvh - 140px);object-fit:contain}
+.closeup-grid .image-open img{height:auto;aspect-ratio:3/4;object-fit:contain}#image-dialog{max-width:790px;max-height:calc(100dvh - 32px)}#image-dialog>img{max-height:calc(100dvh - 140px);object-fit:contain}
