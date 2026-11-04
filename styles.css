@@ -21,4 +21,6 @@
 .brand-logo{object-fit:contain!important;border:0!important;border-radius:0!important;background:transparent!important}.app-identity>img[src="benken-play-sound.svg"]{object-fit:contain;border:0;border-radius:0;box-shadow:none;background:transparent}
 
 /* Show the complete Settings overview rather than cropping to landscape. */
-#product-screen.full-settings-image{aspect-ratio:auto;height:auto;object-fit:contain;display:block}
+
+
+.features .workflow-statement{font-size:clamp(28px,3.4vw,46px);line-height:1.2;max-width:980px;margin-inline:auto;letter-spacing:-1.2px}
