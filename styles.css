@@ -5,3 +5,6 @@
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 /* Keep the complete app interface visible in the main product image. */
 .hero-shot img{object-fit:contain}
+
+/* Published tutorial videos */
+.video-card .video-poster{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border-radius:12px;margin-bottom:20px}.video-card strong{display:block}.video-section #video-library{min-width:0;width:100%}

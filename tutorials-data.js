@@ -2,7 +2,7 @@
 // Add the confirmed BenKen YouTube channel and videos here when available.
 window.BenKenLearning={
   "youtubeChannel": "",
-  "videos": [],
+  "videos": [{"title":"Episode 1 — Meet BenKen Stage Pro","description":"A first tour of the song library, lyrics, mixer and controls. 3 min 25 sec.","url":"https://www.youtube.com/watch?v=tXcDqU7Qvbg","poster":"episode-01-poster.jpg"}],
   "guides": [
     {
       "id": "import-song",
