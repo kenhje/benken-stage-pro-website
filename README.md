@@ -22,3 +22,6 @@ The pre-redesign source is preserved in Website_Archive/2026-11-05_before_redesi
 
 Made for BenKen™
 Copyright © Kenneth Hjelle 2026.
+
+## Song editor (10 November 2026)
+`editor.html` provides text/chord/section editing, local drafts, ChordPro export, and a private Supabase song library. The matching app is V26.162. `editor-library.js` is copied from the app’s `benken-web-library-v26-162.js`; `editor-lyrics.js` uses the app lyric renderer. Publish both versions together. The private schema is installed with `SUPABASE_WEB_EDITOR_SETUP.sql` in the app package; only authenticated owners can read their rows. Saves use revision checks. Audio is never part of this API. Email sign-in and physical device verification are still pending.
