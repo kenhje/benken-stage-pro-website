@@ -12,9 +12,9 @@
 
 /* November 2026 — restrained monochrome product website. */
 .site-header{background:#101011f5;backdrop-filter:blur(12px)}
-.brand img,.closing>div>img,.dialog-logo{filter:grayscale(1)}
-.primary,.nav-cta{background:#ededee;color:#101011;box-shadow:none}
-.primary:hover,.nav-cta:hover{background:#fff}.secondary{background:transparent;border-color:#505055}
+.brand img,.closing>div>img,.dialog-logo{filter:none}
+.primary,.nav-cta{background:#e5ad83;color:#101011;box-shadow:none}
+.primary:hover,.nav-cta:hover{background:#f1c4a2}.secondary{background:transparent;border-color:#505055}
 .button{border-radius:5px}.button:hover{transform:none}.status-label{padding:0;border:0;background:none;border-radius:0;color:var(--muted);font-size:12px;letter-spacing:.03em}.status-label i{display:none}
 .hero-product:before{display:none}.device-frame{border-radius:10px;border:1px solid #55555b;padding:6px;box-shadow:0 18px 42px #0004}.device-frame .image-open{border-radius:5px}
 .product-home .hero{grid-template-columns:.85fr 1.15fr;gap:64px;padding-block:96px 88px;min-height:570px}
