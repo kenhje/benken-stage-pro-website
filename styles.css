@@ -48,3 +48,7 @@
 .product-home #workspace .view-tabs{margin-top:24px;flex-wrap:wrap}
 .product-home .tool-grid .image-open{background:#0b111a}
 .product-home .tool-grid .image-open img{aspect-ratio:4/3}
+
+/* Portrait iPad home screen in the hero, with the entire app visible. */
+.product-home .hero-product{width:100%;max-width:430px;justify-self:center}
+.product-home .hero-shot img{aspect-ratio:3/4;object-fit:contain}
