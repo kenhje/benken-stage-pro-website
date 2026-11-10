@@ -58,16 +58,30 @@
 .product-home .feature-card .image-open{background:#0a111c;border:1px solid var(--line);border-radius:8px}
 .product-home .feature-card .image-open img{aspect-ratio:16/9;object-fit:contain;object-position:center}
 
-/* App colours, restrained: navy surfaces with copper accents. */
-body.product-home{--navy:#091625;--navy-deep:#06111e;--panel:#14263b;--raised:#1c3650;--line:#2c465e;--copper:#e5ad83;--copper-light:#f1c4a2;--text:#edf2f8;--muted:#b7c5d4;--faint:#8a9eb2}
-.product-home .site-header{background:#14263bf5;border-bottom-color:var(--line)}
-.product-home .section-tint{background:#102238;border-color:var(--line)}
+/* Dark app skin: charcoal surfaces with logo copper accents. */
+body.product-home{--navy:#111318;--navy-deep:#0d0f13;--panel:#1b1f26;--raised:#292f39;--line:#424c59;--copper:#e5ad83;--copper-light:#f1c4a2;--text:#edf1f5;--muted:#bdc5cf;--faint:#98a4b3}
+.product-home .site-header{background:#1b1f26f5;border-bottom-color:var(--line)}
+.product-home .section-tint{background:#171b21;border-color:var(--line)}
 .product-home .site-footer{border-color:var(--line)}
 .product-home .device-frame{background:var(--navy-deep);border-color:var(--line)}
-.product-home .secondary{border-color:#58708a}
+.product-home .secondary{border-color:#637183}
 .product-home .view-tabs button[aria-selected=true]{color:var(--copper);border-bottom-color:var(--copper)}
-.product-home .expand-icon{background:#14263bef;border-color:#58708a;color:var(--copper)}
+.product-home .expand-icon{background:#1b1f26ef;border-color:#637183;color:var(--copper)}
 .product-home .wide-screen,.product-home .tool-grid .image-open{background:var(--navy-deep)}
 .product-home dialog{border-color:var(--line)}
 .product-home .tag,.product-home .feature-directory h3{color:var(--copper)}
 @media(max-width:800px){.product-home .site-header nav{background:var(--panel);border-color:var(--line)}}
+
+/* Portrait reading views retain the complete iPad screen. */
+.product-home .feature-card .portrait-shot{width:min(100%,380px);margin-inline:auto;background:var(--navy-deep)}
+.product-home .feature-card .portrait-shot img{aspect-ratio:3/4;object-fit:contain}
+.product-home #screen-panel.portrait-view{width:min(100%,480px);margin-inline:auto}
+.product-home #screen-panel.portrait-view img{aspect-ratio:3/4;object-fit:contain}
+.skin-choices{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:16px}
+.skin-choices button{padding:10px 15px;min-height:42px;background:var(--panel);border:1px solid var(--line);border-radius:5px;color:var(--muted)}
+.skin-choices button[aria-pressed=true]{border-color:var(--copper);color:var(--copper);background:var(--raised)}
+
+.product-home .feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 30px}
+.product-home .tool-grid .image-open img{aspect-ratio:16/9}
+@media(max-width:1000px){.product-home .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.product-home .feature-grid{grid-template-columns:1fr}}
