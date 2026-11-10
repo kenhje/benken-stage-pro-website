@@ -52,3 +52,8 @@
 /* Portrait iPad home screen in the hero, with the entire app visible. */
 .product-home .hero-product{width:100%;max-width:430px;justify-self:center}
 .product-home .hero-shot img{aspect-ratio:3/4;object-fit:contain}
+
+/* Feature cards show different full app screens, without cropping. */
+.product-home .feature-grid{row-gap:38px}
+.product-home .feature-card .image-open{background:#0a111c;border:1px solid var(--line);border-radius:8px}
+.product-home .feature-card .image-open img{aspect-ratio:16/9;object-fit:contain;object-position:center}
