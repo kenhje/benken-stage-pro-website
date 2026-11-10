@@ -38,3 +38,13 @@
 @media(max-width:560px){.product-home .feature-grid{grid-template-columns:1fr;gap:40px}.product-home .hero h1{font-size:43px;letter-spacing:-1.7px}.product-home .section-heading{margin-bottom:28px}.platform-strip>.shell{gap:12px;font-size:11px}.platform-strip i{display:none}.device-foot{padding-inline:0;font-size:10px}.product-home .news-grid article{padding-top:20px}}
 
 .chart-feature{display:grid;grid-template-columns:1.3fr 1fr;align-items:center;gap:56px;border-top:1px solid var(--line)}.chart-feature h2{margin-bottom:22px}.chart-feature .image-open img{aspect-ratio:auto;object-fit:contain}.chart-feature .screen-caption{text-align:left;font-size:12px}.chart-feature p{font-size:16px}@media(max-width:800px){.chart-feature{grid-template-columns:1fr;gap:26px}.chart-feature>div{grid-row:1}}
+
+/* Product screenshots keep their complete app viewport, including the controls. */
+.product-home .image-open img{object-fit:contain;object-position:center;transform:none}
+.product-home .hero-shot img,.product-home .wide-screen img{aspect-ratio:16/9}
+.product-home .image-open:hover img{transform:none}
+.product-home .feature-card .card-copy{padding:22px 0}
+.product-home .feature-grid{row-gap:8px}
+.product-home #workspace .view-tabs{margin-top:24px;flex-wrap:wrap}
+.product-home .tool-grid .image-open{background:#0b111a}
+.product-home .tool-grid .image-open img{aspect-ratio:4/3}
