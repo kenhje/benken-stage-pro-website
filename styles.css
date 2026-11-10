@@ -85,3 +85,13 @@ body.product-home{--navy:#111318;--navy-deep:#0d0f13;--panel:#1b1f26;--raised:#2
 .product-home .tool-grid .image-open img{aspect-ratio:16/9}
 @media(max-width:1000px){.product-home .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.product-home .feature-grid{grid-template-columns:1fr}}
+
+/* Give the complete mixer a full-width row instead of a small thumbnail. */
+.product-home .feature-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.product-home .feature-card{grid-column:span 2}
+.product-home .feature-card.mixer-feature{grid-column:1/-1}
+.product-home .feature-card.landscape-feature{grid-column:span 3}
+.product-home .mixer-feature .image-open img{aspect-ratio:auto;height:auto;object-fit:contain}
+.product-home .mixer-feature .card-copy p{max-width:850px}
+@media(max-width:800px){.product-home .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-home .feature-card{grid-column:span 1}.product-home .feature-card.landscape-feature{grid-column:span 1}}
+@media(max-width:600px){.product-home .feature-grid{grid-template-columns:1fr}.product-home .feature-card,.product-home .feature-card.landscape-feature{grid-column:1/-1}}

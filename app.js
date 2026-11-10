@@ -39,5 +39,5 @@ if(index){
 }
 
 
-const skinPreviews={navy:{name:'Navy & Copper',src:'personalization-navy-portrait.png'},pacific:{name:'Pacific & Coral',src:'personalization-pacific-portrait.png'},paper:{name:'Warm Paper',src:'personalization-warm-paper-portrait.png'}};
+const skinPreviews={navy:{name:'Navy & Copper',src:'personalization-navy-portrait.png'},violet:{name:'Violet & Dahlia',src:'personalization-violet-portrait.png'},paper:{name:'Warm Paper',src:'personalization-warm-paper-portrait.png'}};
 all('[data-skin-preview]').forEach(button=>button.addEventListener('click',()=>{const skin=skinPreviews[button.dataset.skinPreview];all('[data-skin-preview]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));const image=$('#skin-image'),open=$('#skin-image-open');image.src=skin.src;image.alt='Complete portrait BenKen screen in '+skin.name;open.dataset.image=skin.src;open.dataset.title='Personalization · '+skin.name;}));
