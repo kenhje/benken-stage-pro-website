@@ -7,10 +7,18 @@ const data=()=>({title:$('songTitle').value,artist:$('artist').value,key:$('song
 const draftKey=()=> 'benken-editor-draft-v1:'+ (client.session?.user.id||'local');
 const status=text=>$('status').textContent=text;
 function draft(){clearTimeout(draftTimer);try{localStorage.setItem(draftKey(),JSON.stringify({id:current?.id||null,revision:base?.revision||0,base,data:data(),at:Date.now()}));return true}catch{status('Draft storage is full or unavailable. Export ChordPro to keep your changes.');return false}}
-function preview(){const d=data();$('workTitle').textContent=d.title||'Untitled song';$('previewTitle').textContent=d.title||'Untitled song';$('previewMeta').textContent=[d.artist,d.key?'KEY: '+d.key:''].filter(Boolean).join(' · ');$('previewLyrics').innerHTML=StageLyrics.render(d.text,{centerLines:true});$('findPending').disabled=!d.text.includes('CHORDS TO PLACE')}
+function quickTools(){
+ const text=$('lyrics').value;
+ const chords=[...new Set([...text.matchAll(/\[([A-G](?:#|b)?[^\]\[\s]{0,22})\]/g)].map(m=>m[1]))];
+ const sections=[...new Set([...text.matchAll(/\{(?:comment|c|section):\s*([^}\n]+)\}/gi)].map(m=>m[1].trim()).concat(['INTRO','VERSE','PRE-CHORUS','CHORUS','MELODY','BRIDGE','SOLO','CODA','OUTRO']))];
+ const buttons=(id,values,kind)=>{const box=$(id);const signature=JSON.stringify(values);if(box.dataset.values===signature)return;box.dataset.values=signature;box.replaceChildren();for(const value of values){const b=document.createElement('button');b.type='button';b.textContent=value;b.onclick=()=>kind==='chord'?insert('['+value+']'):insertSection(value);box.append(b)}if(!values.length){const hint=document.createElement('small');hint.textContent='Chords you enter appear here.';box.append(hint)}};
+ buttons('usedChords',chords,'chord');buttons('quickSections',sections,'section');
+}
+function insertSection(name){const t=$('lyrics'),pos=selection[0];insert((pos&&t.value[pos-1]!=='\n'?'\n':'')+'{comment: '+name+'}\n')}
+function preview(){quickTools();const d=data();$('workTitle').textContent=d.title||'Untitled song';$('previewTitle').textContent=d.title||'Untitled song';$('previewMeta').textContent=[d.artist,d.key?'KEY: '+d.key:''].filter(Boolean).join(' · ');$('previewLyrics').innerHTML=StageLyrics.render(d.text,{centerLines:true});$('findPending').disabled=!d.text.includes('CHORDS TO PLACE')}
 function fill(song){$('songTitle').value=song.title||'';$('artist').value=song.artist||'';$('songKey').value=song.key||'';$('lyrics').value=song.text||'';selection=[0,0];preview()}
 function edits(){dirty=true;conflicting=null;$('conflict').hidden=true;preview();draftTimer=setTimeout(()=>{if(draft())status('Draft saved in this browser · Not yet saved online.');},350)}
-for(const id of ['songTitle','artist','songKey','lyrics'])$(id).addEventListener('input',()=>{clearTimeout(draftTimer);edits()});
+for(const id of ['songTitle','artist','songKey','lyrics'])$(id).addEventListener('input',()=>{if(id==='lyrics')selection=[$('lyrics').selectionStart,$('lyrics').selectionEnd];clearTimeout(draftTimer);edits()});
 function canLeave(){return !dirty||confirm('You have changes not saved online. Export or save first if you want to keep them. Leave this song?')}
 function openSong(record,{restore=false}={}){if(!restore&&!canLeave())return;current=record?.id?record:null;base=record?.id?structuredClone(record):null;fill(record||{});dirty=false;conflicting=null;$('conflict').hidden=true;draft();drawLibrary();status(record?.id?'Loaded online version '+record.revision+'.':'New local draft. Sign in and save online when ready.')}
 function restoreDraft(){try{const d=JSON.parse(localStorage.getItem(draftKey())||'null');if(!d?.data)return false;current=d.id?{id:d.id}:null;base=d.base||null;fill(d.data);dirty=!base||!W.equal(d.data,base);status('Restored your browser draft'+(dirty?' · Not yet saved online.':'.'));return true}catch{return false}}
@@ -31,7 +39,7 @@ $('newSong').onclick=()=>openSong({title:'',text:''});$('demo').onclick=()=>open
 $('lyrics').addEventListener('select',()=>selection=[$('lyrics').selectionStart,$('lyrics').selectionEnd]);$('lyrics').addEventListener('keyup',()=>selection=[$('lyrics').selectionStart,$('lyrics').selectionEnd]);$('lyrics').addEventListener('click',()=>selection=[$('lyrics').selectionStart,$('lyrics').selectionEnd]);
 function insert(value){const t=$('lyrics'),pos=selection[0];if(t.value.length+value.length>200000){status('Lyrics are too long.');return}t.setRangeText(value,pos,pos,'end');selection=[t.selectionStart,t.selectionEnd];t.focus();edits()}
 $('insertChord').onclick=()=>{const c=$('chord').value.trim().replace(/^\[|\]$/g,'');if(!/^[A-G](?:#|b)?[a-zA-Z0-9+#/()\-]*$/.test(c)){status('Enter a chord such as C, Cm7 or Eb/D.');return}insert('['+c+']')};
-$('insertSection').onclick=()=>{const t=$('lyrics'),pos=selection[0];insert((pos&&t.value[pos-1]!=='\n'?'\n':'')+'{comment: '+$('section').value+'}\n')};
+$('insertSection').onclick=()=>insertSection($('section').value);
 $('findPending').onclick=()=>{const t=$('lyrics'),pos=t.value.indexOf('CHORDS TO PLACE');if(pos>=0){t.focus();t.setSelectionRange(pos,pos+'CHORDS TO PLACE'.length);t.scrollTop=(t.value.slice(0,pos).split('\n').length-2)*30;selection=[pos,pos]}};
 $('fontSize').oninput=()=>{$('previewLyrics').style.fontSize=$('fontSize').value+'px'};
 $('download').onclick=()=>{const d=data(),v='{title: '+d.title.replace(/[\r\n{}]/g,' ')+'}\n{artist: '+d.artist.replace(/[\r\n{}]/g,' ')+'}\n{key: '+d.key.replace(/[\r\n{}]/g,' ')+'}\n'+d.text;const a=document.createElement('a'),url=URL.createObjectURL(new Blob([v],{type:'text/plain;charset=utf-8'}));a.href=url;a.download=(d.title||'BenKen-song').replace(/[^\p{L}\p{N} _-]/gu,'').slice(0,100)+'.cho';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);status('ChordPro exported. Import it under Lyrics / ChordPro in BenKen if needed.')};
