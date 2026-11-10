@@ -57,3 +57,17 @@
 .product-home .feature-grid{row-gap:38px}
 .product-home .feature-card .image-open{background:#0a111c;border:1px solid var(--line);border-radius:8px}
 .product-home .feature-card .image-open img{aspect-ratio:16/9;object-fit:contain;object-position:center}
+
+/* App colours, restrained: navy surfaces with copper accents. */
+body.product-home{--navy:#091625;--navy-deep:#06111e;--panel:#14263b;--raised:#1c3650;--line:#2c465e;--copper:#e5ad83;--copper-light:#f1c4a2;--text:#edf2f8;--muted:#b7c5d4;--faint:#8a9eb2}
+.product-home .site-header{background:#14263bf5;border-bottom-color:var(--line)}
+.product-home .section-tint{background:#102238;border-color:var(--line)}
+.product-home .site-footer{border-color:var(--line)}
+.product-home .device-frame{background:var(--navy-deep);border-color:var(--line)}
+.product-home .secondary{border-color:#58708a}
+.product-home .view-tabs button[aria-selected=true]{color:var(--copper);border-bottom-color:var(--copper)}
+.product-home .expand-icon{background:#14263bef;border-color:#58708a;color:var(--copper)}
+.product-home .wide-screen,.product-home .tool-grid .image-open{background:var(--navy-deep)}
+.product-home dialog{border-color:var(--line)}
+.product-home .tag,.product-home .feature-directory h3{color:var(--copper)}
+@media(max-width:800px){.product-home .site-header nav{background:var(--panel);border-color:var(--line)}}
