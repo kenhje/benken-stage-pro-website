@@ -12,11 +12,10 @@ function showImage(button){const img=$('#enlarged-image');img.src=button.dataset
 document.addEventListener('click',event=>{const button=event.target.closest('[data-image]');if(button)showImage(button);});
 const views={
  mixer:{portrait:true,src:'mixer-portrait-v165.png',title:'Mixer · Demo session',alt:'Complete BenKen mixer with active meters during four-track demo playback',caption:'Four demo tracks playing through the mixer. The meters show the actual audio signal.'},
- stage:{portrait:true,src:'performance-bottom-portrait-dark.png',title:'Bottom controls',alt:'Complete BenKen performance view with compact bottom controls',caption:'Keep the regular playback controls along the bottom.'},
+ stage:{portrait:true,src:'bottom-controls-portrait-v165.png',title:'Bottom controls',alt:'Complete BenKen performance view with compact bottom controls',caption:'Keep the regular playback controls along the bottom.'},
  side:{portrait:true,src:'performance-side-portrait-dark.png',title:'Side controls',alt:'Complete BenKen performance view with controls down the left side',caption:'Move the controls to the side and keep lyrics and chords in view.'},
  clean:{portrait:true,src:'performance-clean-portrait-dark.png',title:'Hidden controls',alt:'Complete BenKen lyrics view with the control bar hidden',caption:'Hide the control bar for a clear reading view. Bring it back with the corner button.'},
- landscape:{src:'performance-bottom-dark.png',title:'Landscape lyrics',alt:'BenKen Dark with two columns of lyrics and bottom controls',caption:'A landscape reading layout with two columns and compact bottom controls.'},
- settings:{src:'settings-overview-dark.png',title:'Settings',alt:'BenKen Settings with categories for songs, audio, lyrics, appearance, controls and planning',caption:'Grouped settings for songs, audio, lyrics, appearance, controls and planning.'}
+ settings:{portrait:true,src:'settings-portrait-closed.png',title:'Settings',alt:'BenKen Settings with categories for songs, audio, lyrics, appearance, controls and planning',caption:'Grouped settings for songs, audio, lyrics, appearance, controls and planning.'}
 };
 const tabs=all('[data-view]');
 function selectView(button,focus=false){const view=views[button.dataset.view];if(!view)return;tabs.forEach(tab=>{const selected=tab===button;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;});$('#screen-panel').classList.toggle('portrait-view',!!view.portrait);$('#product-screen').src=view.src;$('#product-screen').alt=view.alt;$('#product-enlarge').dataset.image=view.src;$('#product-enlarge').dataset.title=view.title;$('#screen-caption').textContent=view.caption;$('#screen-panel').setAttribute('aria-labelledby',button.id);if(focus)button.focus();}
