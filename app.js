@@ -11,7 +11,7 @@ all('[data-close]').forEach(button=>button.addEventListener('click',()=>button.c
 function showImage(button){const img=$('#enlarged-image');img.src=button.dataset.image;img.alt=button.querySelector('img')?.alt||button.dataset.title;$('#image-title').textContent=button.dataset.title;$('#image-dialog').showModal();}
 document.addEventListener('click',event=>{const button=event.target.closest('[data-image]');if(button)showImage(button);});
 const views={
- mixer:{portrait:true,src:'mixer-portrait-dark.png',title:'Mixer · Demo session',alt:'Complete BenKen mixer with active meters during four-track demo playback',caption:'Four demo tracks playing through the mixer. The meters show the actual audio signal.'},
+ mixer:{portrait:true,src:'mixer-portrait-v165.png',title:'Mixer · Demo session',alt:'Complete BenKen mixer with active meters during four-track demo playback',caption:'Four demo tracks playing through the mixer. The meters show the actual audio signal.'},
  stage:{portrait:true,src:'performance-bottom-portrait-dark.png',title:'Bottom controls',alt:'Complete BenKen performance view with compact bottom controls',caption:'Keep the regular playback controls along the bottom.'},
  side:{portrait:true,src:'performance-side-portrait-dark.png',title:'Side controls',alt:'Complete BenKen performance view with controls down the left side',caption:'Move the controls to the side and keep lyrics and chords in view.'},
  clean:{portrait:true,src:'performance-clean-portrait-dark.png',title:'Hidden controls',alt:'Complete BenKen lyrics view with the control bar hidden',caption:'Hide the control bar for a clear reading view. Bring it back with the corner button.'},
